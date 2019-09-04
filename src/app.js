@@ -8,7 +8,6 @@ const cookieParser = require('cookie-parser');
 // local modules
 const router = require('./controllers');
 
-
 const app = express();
 
 const port = 5000 || process.env.PORT;
