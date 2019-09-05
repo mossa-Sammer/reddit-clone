@@ -1,11 +1,11 @@
-const { getUser } = require('../../model/queries/getUser');
+const { getUserByEmail } = require('../../model/queries/getUser');
 const { createToken } = require('../../utils/cookie');
 const { comparePassword } = require('../../utils/password');
 
 exports.login = (req, res, next) => {
   let storedUser;
 
-  getUser(req.body)
+  getUserByEmail(req.body)
     .then((user) => {
       [storedUser] = [user.rows[0]];
 
