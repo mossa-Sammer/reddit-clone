@@ -1,14 +1,9 @@
 const bcrypt = require('bcrypt');
 
-exports.hash = (password) => {
+exports.hash = (password) =>
   // eslint-disable-next-line no-new
-  bcrypt.genSalt(10)
-    .then((salt) => {
-      bcrypt.hash(password, salt);
-    })
-    .catch((err) => {
-      throw new Error(err.message);
-    });
-};
-
+  new Promise((resolve, reject) => bcrypt.genSalt(10)
+    .then((salt) => bcrypt.hash(password, salt))
+    .then((hashed) => resolve(hashed))
+    .catch((err) => reject(err)));
 exports.comparePassword = (actual, expected) => bcrypt.compare(actual, expected);
