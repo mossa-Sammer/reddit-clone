@@ -1,9 +1,9 @@
 const { insertUser } = require('../../model/queries/insertUser');
-const { getUser } = require('../../model/queries/getUser');
+const { getUserByEmail } = require('../../model/queries/getUser');
 const { hash } = require('../../utils/password');
 
 module.exports = (req, res, next) => {
-  getUser(req.body.email)
+  getUserByEmail(req.body.email)
     .then((user) => {
       if (user.rows[0]) { throw new Error('email already exists'); } else return hash(req.body.password);
     })

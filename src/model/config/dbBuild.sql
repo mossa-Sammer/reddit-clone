@@ -15,7 +15,7 @@ CREATE TABLE post (
   post_id SERIAL PRIMARY KEY NOT NULL,
   user_id INTEGER REFERENCES users(user_id),
   content VARCHAR NOT NULL,
-  date_of_publish DATE NOT NULL
+  date_of_publish DATE DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE comment (
@@ -23,6 +23,6 @@ CREATE TABLE comment (
   post_id INTEGER REFERENCES post(post_id),
   user_id INTEGER REFERENCES users(user_id),
   content VARCHAR NOT NULL,
-  date_of_publish DATE NOT NULL
+  date_of_publish DATE DEFAULT CURRENT_TIMESTAMP
 );
 COMMIT;

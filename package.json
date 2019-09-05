@@ -6,7 +6,8 @@
   "scripts": {
     "test": "NODE_ENV=test node tests/dbTest.test.js | tap-spec && NODE_ENV=test node tests/routes.test.js | tap-spec ",
     "dev": "NODE_ENV=development nodemon src/index.js",
-    "start": "NODE_ENV=production node src/index.js"
+    "start": "NODE_ENV=production node src/index.js",
+    "kill":"fuser -k 5000/tcp"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,7 @@
     "cookie-parser": "^1.4.4",
     "env2": "^2.2.2",
     "express": "^4.17.1",
+    "express-handlebars": "^3.1.0",
     "jsonwebtoken": "^8.5.1",
     "pg": "^7.12.1"
   },
