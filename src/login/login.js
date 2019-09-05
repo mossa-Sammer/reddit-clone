@@ -16,14 +16,18 @@ exports.login = (req, res, next) => {
           .then((authed) => {
             if (authed) {
               return createToken(String(storedUser.user_id));
-            } return res.send('not authed');
+            } throw new Error('not authed');
           })
           .then((token) => {
             res.cookie('user', token);
             res.cookie('username', storedUser.name);
             res.send('welcome');
           })
-          .catch((err) => { next(err); });
+          .catch((err) => {
+            if (err.message === 'not authed') {
+              res.send('not authed');
+            } else { next(err); }
+          });
       }
     });
 };
