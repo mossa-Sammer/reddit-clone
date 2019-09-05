@@ -12,7 +12,6 @@ module.exports = (req, res, next) => {
       return insertUser(req.body);
     })
     .then((inserted) => {
-      console.log(inserted.rows[0]);
       res.redirect('/');
     })
     .catch((err) => {
