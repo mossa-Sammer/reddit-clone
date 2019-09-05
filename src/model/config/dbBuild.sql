@@ -15,7 +15,10 @@ CREATE TABLE post (
   post_id SERIAL PRIMARY KEY NOT NULL,
   user_id INTEGER REFERENCES users(user_id),
   content VARCHAR NOT NULL,
-  date_of_publish DATE DEFAULT CURRENT_TIMESTAMP
+  date_of_publish DATE DEFAULT CURRENT_TIMESTAMP,
+  up_votes INTEGER DEFAULT 0,
+  down_votes INTEGER DEFAULT 0
+
 );
 
 CREATE TABLE comment (
