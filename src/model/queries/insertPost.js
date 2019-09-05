@@ -1,6 +1,6 @@
 const connection = require('../config/conncetion');
 
-exports.insertPost = (id , content) => {
+exports.insertPost = (id, content) => {
   const sql = {
     text: 'INSERT INTO post (user_id, content) VALUES ($1,$2) returning *',
     values: [
