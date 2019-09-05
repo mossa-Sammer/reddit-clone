@@ -5,6 +5,6 @@ exports.clientError = (req, res) => {
 
 // eslint-disable-next-line no-unused-vars
 exports.serverError = (error, req, res, next) => {
-  console.log(error);
+  // console.log(error);
   res.status(500).send('Internal server error');
 };
