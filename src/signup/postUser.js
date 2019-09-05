@@ -5,9 +5,8 @@ const { hash } = require('../utils/password');
 module.exports = (req, res, next) => {
   getUser(req.body.email)
     .then((user) => {
-      if (user.rows[0]) { throw new Error('email already exists'); }
+      if (user.rows[0]) { throw new Error('email already exists'); } else return hash(req.body.password);
     })
-    .then((r) => hash(req.body.password))
     .then((hashed) => {
       req.body.password = hashed;
       return insertUser(req.body);
