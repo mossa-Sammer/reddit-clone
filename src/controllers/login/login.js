@@ -5,7 +5,7 @@ const { comparePassword } = require('../../utils/password');
 exports.login = (req, res, next) => {
   let storedUser;
 
-  getUserByEmail(req.body)
+  getUserByEmail(req.body.email)
     .then((user) => {
       [storedUser] = [user.rows[0]];
 
